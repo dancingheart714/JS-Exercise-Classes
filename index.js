@@ -41,9 +41,26 @@ class Airplane {
           + It should return a string with `name` and `age`. Example: "Mary, 50"
   */
   
- class Person {
-    
+ class Person{
+   constructor(name, age) {
+     this.name = name;
+     this.age = age;
+     this.stomach = [];
+   }
+
+   eat(edible){
+     if(this.stomach.length < 10){
+       this.stomach.push(edible);
+       }
+     }
+   poop(){
+     this.stomach = [];
+   }
+  toString(){
+    return `${this.name}, ${this.age}`;
   }
+  }
+
   
   /*
     TASK 2
@@ -60,8 +77,35 @@ class Airplane {
   */
   
  class Car {
-    
+    constructor(model, milesPerGallon){
+      this.tank = 0;
+      this.odometer = 0;
+      this.model = model;
+      this.milesPerGallon = milesPerGallon
+    }
   }
+  Car.prototype.fill = function(fillGallons){
+    return fillGallons + this.tank;
+  }
+  Car.prototype.drive = function(driveDistance){
+    return driveDistance + this.odometer;
+  }
+  // fill(gallons) {
+  //   if (this.tank * this.milesPerGallon - distance > 0) {
+  //     this.odometer + distance;
+  //     this.tank - distance / this.milesPerGallon;
+  //     } else {
+  //       this.odometer + this.tank * this.milesPerGallon;
+  //       this.tank = 0;
+  //       return `I ran out of fuel at ${this.odometer} miles!`;
+  //   }
+  //   } 
+      // function drive(distance){
+      //     if (this.tank <= 0) {
+      //       return console.log(`I ran out of fuel at ${this.odometer} miles!`)
+      // }
+
+
   
   /*
     TASK 3
@@ -76,8 +120,16 @@ class Airplane {
           + {name} and {location} of course come from the instance's own properties.
   */
  class Lambdasian {
-    
+  constructor(attributes) {
+    this.name = attributes.name;
+    this.age = attributes.age;
+    this.location = attributes.location;
   }
+  speak(){
+    return `Hello my name is ${this.name}, I am from ${this.location}.`;
+  }
+}  
+
   
   /*
     TASK 4
@@ -94,8 +146,22 @@ class Airplane {
           + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
   */
  class Instructor {
-
- }
+  constructor(attributes) {
+    this.name = attributes.name;
+    this.age = attributes.age;
+    this.location = attributes.location;
+    this.specialty = attributes.specialty;
+    this.favLanguage = attributes.favLanguage;
+    this.catchPhrase = attributes.catchPhrase;
+  }
+  demo(subject) {
+    return `Today we are learning about ${subject}`;
+  }
+  grade(student, subject) {
+    return `${student.name} receives a perfect score on ${subject}`;
+  }
+}
+ 
   /*
     TASK 5
       - Write a Student class extending Lambdasian.
@@ -112,8 +178,25 @@ class Airplane {
           + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
   */
  class Student {
-     
- }
+  constructor(attributes) {
+    this.name = attributes.name;
+    this.age = attributes.age;
+    this.location = attributes.location;
+    this.previousBackground = attributes.previousBackground;
+    this.className = attributes.className;
+    this.favSubjects = attributes.favSubjects;
+  }
+  listSubjects() {
+    return `Loving ${this.favSubjects}`;
+  }
+  PRAssignment(subject) {
+    return `${student.name} has submitted a PR for ${this.subject}`;
+  }
+  sprintChallenge(subject) {
+    return `${student.name} has submitted a PR for ${this.subject}`;
+  }
+}   
+ 
   
   /*
     TASK 6
@@ -129,8 +212,24 @@ class Airplane {
           + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
   */
  class ProjectManager {
-     
- }
+  constructor(attributes) {
+    this.name = attributes.name;
+    this.age = attributes.age;
+    this.location = attributes.location;
+    this.specialty = attributes.specialty;
+    this.favLanguage = attributes.favLanguage;
+    this.catchPhrase = attributes.catchPhrase;
+    this.gradClassName = attributes.gradClassName;
+    this.favInstructor = attributes.favInstructor;
+  }
+  standUp(slackChannel) {
+    return `${this.name} annouces to ${slackChannel}, @channel standy times!`;
+  }
+  debugsCode(student,subject) {
+    return `${this.name} debugs ${student.name}'s code on ${subject}`;
+  }
+}
+
   /*
     STRETCH PROBLEM (no tests!)
       - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
