@@ -45,8 +45,19 @@ class Airplane {
    constructor(name, age) {
      this.name = name;
      this.age = age;
+     this.stomach=[];
+     this.toString=function(){
+       return `${this.name} , ${this.age}`
+     }
    }
-    
+   eat(someFood){
+      if (this.stomach.length <10){
+        return this.stomach.push(someFood);
+      }
+   }
+  poop(){
+    return this.stomach=[];
+  }
   }
   
   /*
@@ -71,17 +82,18 @@ class Airplane {
      this.tank = 0;
    }
    fill(gallons){
-      this.tank = this.tank + gallons;
+     return this.tank += gallons;
    }
    drive(distance){
-     this.odometer = this.odometer += distance;
-     this.tank = this.tank -= distance;
-     if(this.tank ===0) {
-       return `I ran out of fuel at ${this.odometer}miles!`;
-     }
-   }
-    
+    if (distance > this.tank * this.milesPerGallon) {
+      this.odometer += this.tank * this.milesPerGallon;
+      this.tank = 0;
+    return `I ran out of fuel at ${this.odometer} miles!`;
+    }
+    this.odometer += distance;
+    this.tank -= distance / this.milesPerGallon;
   }
+}
   
   /*
     TASK 3
