@@ -64,6 +64,22 @@ class Airplane {
   */
   
  class Car {
+   constructor(model, milesPerGallon){
+     this.model = model;
+     this.milesPerGallon = milesPerGallon;
+     this.odometer = 0;
+     this.tank = 0;
+   }
+   fill(gallons){
+      this.tank = this.tank + gallons;
+   }
+   drive(distance){
+     this.odometer = this.odometer += distance;
+     this.tank = this.tank -= distance;
+     if(this.tank ===0) {
+       return `I ran out of fuel at ${this.odometer}miles!`;
+     }
+   }
     
   }
   
@@ -80,15 +96,7 @@ class Airplane {
           + {name} and {location} of course come from the instance's own properties.
   */
 
-  // function Lambdasian(name, age, location){
-  //   this.name = name;
-  //   this.age = age;
-  //   this.location = location;
-  // }
-
-  // Lambdasian.prototype.speak = function(){
-  //   return `Hello my name is ${this.name}, I am from ${this.location}`;
-  // }
+ 
 
  class Lambdasian {
     constructor(object){
@@ -180,8 +188,19 @@ class Airplane {
           + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
           + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
   */
- class ProjectManager {
-     
+ class ProjectManager extends Instructor {
+       constructor(object){
+         super(object);
+         this.gradClassName = object.gradClassName;
+         this.favInstructor = object.favInstructor;
+       }
+       standUp(channel){
+         return `${this.name} announces to ${channel}, @channel standy times!`;
+       }
+       debugsCode(student,subject){
+         return `${this.name} debugs ${student.name}'s code on ${subject}`;
+       }
+
  }
   /*
     STRETCH PROBLEM (no tests!)
